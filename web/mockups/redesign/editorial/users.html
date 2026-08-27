@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Tim & Pengguna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.team{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;background:var(--card);border-radius:var(--r-card);padding:16px 20px;box-shadow:var(--card-shadow);border:var(--card-border)}
+.team .tm{width:36px;height:36px;border-radius:var(--r-mk);background:linear-gradient(135deg,var(--brand-l),var(--brand));color:#fff;display:grid;place-items:center;font-weight:700}
+.ava-sm{width:26px;height:26px;border-radius:50%;background:var(--tint);color:var(--brand);display:inline-grid;place-items:center;font-weight:700;font-size:11px;margin-right:8px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side" data-active="users"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div><div class="h1">Tim &amp; Pengguna</div><div class="sub">Resource dimiliki <b>Personal</b> atau <b>Tim</b>. Superadmin kelola semua.</div></div>
+      <div style="display:flex;gap:10px"><button class="btn">+ Tim</button><button class="btn pri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg> Undang pengguna</button></div>
+    </div>
+
+    <div class="sec"><h3>Tim</h3></div>
+    <div class="list" style="margin-bottom:30px">
+      <div class="team">
+        <div class="tm">S</div>
+        <div><div style="font-weight:600;font-size:15px">Studio</div><div class="sub" style="font-size:12.5px">4 anggota · 12 deployment · <span class="mono">owner: rani</span></div></div>
+        <div><span class="ava-sm">R</span><span class="ava-sm">B</span><span class="ava-sm">C</span><span class="sub" style="font-size:12px">+1</span></div>
+      </div>
+      <div class="team">
+        <div class="tm" style="background:linear-gradient(135deg,#7ed3c7,#1f9e8e)">O</div>
+        <div><div style="font-weight:600;font-size:15px">Ops</div><div class="sub" style="font-size:12.5px">2 anggota · 5 deployment · <span class="mono">owner: admin</span></div></div>
+        <div><span class="ava-sm">A</span><span class="ava-sm">D</span></div>
+      </div>
+    </div>
+
+    <div class="sec"><h3>Anggota</h3></div>
+    <div class="card" style="padding:6px 8px;margin-bottom:26px">
+      <table class="tbl">
+        <thead><tr><th>Nama</th><th>Email</th><th>Peran</th><th>Tim</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td><span class="ava-sm">A</span><b>Admin</b> <span class="sub" style="font-size:11px">@admin</span></td><td class="mono" style="font-size:12.5px">admin@lamun.my.id</td><td><span class="tag admin">superadmin</span></td><td>—</td><td><span class="mini ok"><span class="pulse sm"><i></i></span> aktif</span></td><td style="text-align:right"><button class="btn sm">Kelola</button></td></tr>
+          <tr><td><span class="ava-sm">R</span><b>Rani P.</b> <span class="sub" style="font-size:11px">@rani</span></td><td class="mono" style="font-size:12.5px">rani@studio.dev</td><td><span class="tag t-app">team owner</span></td><td>Studio</td><td><span class="mini ok"><span class="pulse sm"><i></i></span> aktif</span></td><td style="text-align:right"><button class="btn sm">Kelola</button></td></tr>
+          <tr><td><span class="ava-sm">B</span><b>Budi S.</b> <span class="sub" style="font-size:11px">@budi</span></td><td class="mono" style="font-size:12.5px">budi@studio.dev</td><td><span class="tag user">member</span></td><td>Studio</td><td><span class="mini ok"><span class="pulse sm"><i></i></span> aktif</span></td><td style="text-align:right"><button class="btn sm">Kelola</button></td></tr>
+          <tr><td><span class="ava-sm">C</span><b>Citra D.</b> <span class="sub" style="font-size:11px">@citra</span></td><td class="mono" style="font-size:12.5px">citra@studio.dev</td><td><span class="tag t-app">team admin</span></td><td>Studio</td><td><span class="mini off">diundang</span></td><td style="text-align:right"><button class="btn sm">Kelola</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="padding:22px">
+      <div class="st-sec">Undang pengguna</div>
+      <div class="grid-3">
+        <div class="field"><label>Email</label><div class="input"><input placeholder="orang@contoh.com"></div></div>
+        <div class="field"><label>Tim</label><div class="input"><select><option>Personal (tanpa tim)</option><option>Studio</option><option>Ops</option></select></div></div>
+        <div class="field"><label>Peran</label><div class="input"><select><option>member</option><option>team admin</option><option>team owner</option><option>superadmin</option></select></div></div>
+      </div>
+      <button class="btn pri">Kirim undangan</button>
+    </div>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

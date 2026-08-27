@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side" data-active="index"></aside>
+
+  <main class="main">
+    <div class="page-head">
+      <div>
+        <div class="eyebrow"><span class="pulse"><i></i></span> 7 deployment · semua sehat</div>
+        <div class="h1">Semua yang kamu jalankan,<br>satu tempat.</div>
+        <div class="sub">Situs statis, reverse-proxy, dan aplikasi — dengan HTTPS otomatis & deploy tanpa henti.</div>
+      </div>
+      <button class="btn pri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg> Deployment baru</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">7</div><div class="l"><span class="dot"></span> deployment aktif</div></div>
+      <div class="stat"><div class="n">3</div><div class="l"><span class="dot"></span> aplikasi berjalan</div></div>
+      <div class="stat"><div class="n">7</div><div class="l"><span class="dot"></span> sertifikat valid</div></div>
+      <div class="stat"><div class="n" style="color:var(--purple)">99.9%</div><div class="l">uptime 30 hari</div></div>
+    </div>
+
+    <div class="card" style="padding:22px 24px;margin-bottom:26px">
+      <div class="st-sec">Status server <span class="sub" style="text-transform:none;font-weight:400">· batam · 2 vCPU ARM · 6 GB</span></div>
+      <div class="res">
+        <div class="r">
+          <div class="pct">34%</div>
+          <div class="top"><span class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg> CPU</span><span class="val">2 vCPU</span></div>
+          <div class="bar"><i style="width:34%"></i></div>
+        </div>
+        <div class="r">
+          <div class="pct">70%</div>
+          <div class="top"><span class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 6v12M17 6v12"/></svg> RAM</span><span class="val">4.2 / 6 GB</span></div>
+          <div class="bar"><i class="warn" style="width:70%"></i></div>
+        </div>
+        <div class="r">
+          <div class="pct">5%</div>
+          <div class="top"><span class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 17l6-6 4 4 6-8"/></svg> Swap</span><span class="val">0.1 / 2 GB</span></div>
+          <div class="bar"><i style="width:5%"></i></div>
+        </div>
+        <div class="r">
+          <div class="pct">45%</div>
+          <div class="top"><span class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/></svg> Disk</span><span class="val">18 / 40 GB</span></div>
+          <div class="bar"><i style="width:45%"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:30px">
+      <div class="card" style="padding:20px 22px">
+        <div class="sec" style="margin:0 0 4px"><h3 style="font-size:16px">Trafik 24 jam</h3><span class="preview-tag">segera</span></div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font-family:var(--font-display);font-weight:700;font-size:26px">48.2k</span><span class="sub" style="font-size:13px">request · 3.1 GB</span></div>
+        <svg class="spark" viewBox="0 0 300 70" preserveAspectRatio="none">
+          <path class="area" d="M0 60 L0 48 C20 44 30 30 50 34 C70 38 80 20 100 22 C120 24 140 46 160 40 C180 34 200 14 220 20 C240 26 260 40 280 30 L300 26 L300 70 L0 70 Z"/>
+          <path class="line" d="M0 48 C20 44 30 30 50 34 C70 38 80 20 100 22 C120 24 140 46 160 40 C180 34 200 14 220 20 C240 26 260 40 280 30 L300 26"/>
+        </svg>
+      </div>
+      <div class="card" style="padding:20px 22px">
+        <div class="sec" style="margin:0 0 10px"><h3 style="font-size:16px">Paling sering diakses</h3><span class="preview-tag">segera</span></div>
+        <div class="toplist">
+          <div class="t"><span class="rank">1</span><span class="path">app.lamund.lamun.my.id/</span><span class="hits">18.4k</span></div>
+          <div class="t"><span class="rank">2</span><span class="path">svc…/api/products</span><span class="hits">9.1k</span></div>
+          <div class="t"><span class="rank">3</span><span class="path">app…/assets/index.js</span><span class="hits">7.7k</span></div>
+          <div class="t"><span class="rank">4</span><span class="path">svc…/api/cart</span><span class="hits">5.2k</span></div>
+          <div class="t"><span class="rank">5</span><span class="path">test.lamund…/</span><span class="hits">3.9k</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:30px">
+      <div class="card" style="padding:20px 22px">
+        <div class="sec" style="margin:0 0 6px"><h3 style="font-size:16px">Deployment terbaru</h3><a href="sites.html">Semua →</a></div>
+        <div style="display:flex;flex-direction:column">
+          <a class="dep" href="app-detail.html"><span class="pulse"><i></i></span><div class="nm"><div class="d">svc.lamund.lamun.my.id</div><small><span class="tag t-app">node</span> deploy zero-downtime</small></div><span class="when">2 mnt lalu</span></a>
+          <a class="dep" href="app-detail.html"><span class="pulse warn"><i></i></span><div class="nm"><div class="d">gitdemo.lamund.lamun.my.id</div><small><span class="tag t-app">express</span> push · building</small></div><span class="when">1 mnt lalu</span></a>
+          <a class="dep" href="site-detail.html"><span class="pulse"><i></i></span><div class="nm"><div class="d">app.lamund.lamun.my.id</div><small><span class="tag static">vue</span> deploy .zip</small></div><span class="when">1 jam lalu</span></a>
+          <a class="dep" href="app-detail.html"><span class="pulse"><i></i></span><div class="nm"><div class="d">run.lamund.lamun.my.id</div><small><span class="tag t-app">python</span> restart</small></div><span class="when">3 hari lalu</span></a>
+          <a class="dep" href="site-detail.html"><span class="pulse"><i></i></span><div class="nm"><div class="d">demo.lamund.lamun.my.id</div><small><span class="tag static">html</span> dibuat</small></div><span class="when">4 hari lalu</span></a>
+        </div>
+      </div>
+      <div class="card" style="padding:20px 22px">
+        <div class="sec" style="margin:0 0 10px"><h3 style="font-size:16px">Error terakhir</h3><span class="preview-tag">segera</span></div>
+        <div class="errs">
+          <div class="e"><span class="dot e5"></span><span class="code c5">502</span><span class="path">/api/checkout</span><span class="src">gitdemo · app</span><span class="cnt">×12</span></div>
+          <div class="e"><span class="dot e5"></span><span class="code c5">500</span><span class="path">/webhook/stripe</span><span class="src">svc · app</span><span class="cnt">×3</span></div>
+          <div class="e"><span class="dot e4"></span><span class="code c4">404</span><span class="path">/old-page</span><span class="src">app.lamund · situs</span><span class="cnt">×88</span></div>
+          <div class="e"><span class="dot e4"></span><span class="code c4">429</span><span class="path">/api/search</span><span class="src">svc · app</span><span class="cnt">×5</span></div>
+          <div class="e"><span class="dot e5"></span><span class="code c5">503</span><span class="path">/api/pay</span><span class="src">gitdemo · app</span><span class="cnt">×2</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

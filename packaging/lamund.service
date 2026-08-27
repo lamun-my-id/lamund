@@ -1,0 +1,46 @@
+[Unit]
+Description=Lamund data plane — reverse proxy + static + auto-HTTPS (:80/:443)
+Documentation=https://github.com/lamun-my-id/lamund
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=lamund
+Group=lamund
+WorkingDirectory=/var/lib/lamund
+
+# Bind :80/:443 tanpa root — hanya kapabilitas bind port istimewa.
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+# --pidfile HARUS sama dengan --reload-pidfile panel (default
+# /var/lib/lamund/lamund.pid) agar hot-reload konfigurasi (situs & zona DNS)
+# benar-benar sampai ke data plane lewat SIGHUP.
+# DNS authoritative opsional: tambahkan --dns <IP-PUBLIK>:53 (+ --public-ip)
+# untuk mengaktifkannya (lihat docs/install.md).
+ExecStart=/usr/local/bin/lamund serve --http :80 --https :443 \
+  --acme-ca production --acme-email admin@example.com \
+  --db /var/lib/lamund/lamund.db --acme-dir /var/lib/lamund/acme \
+  --pidfile /var/lib/lamund/lamund.pid
+
+Restart=on-failure
+RestartSec=3s
+
+# Pengetatan — proses tak butuh akses di luar direktori datanya.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/lamund
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

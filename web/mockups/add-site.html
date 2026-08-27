@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Situs baru</title>
+<script src="theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .grid{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:start;margin-top:20px}
+  .form{padding:24px 26px}
+  .types{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .type{border:1.5px solid var(--line);border-radius:12px;padding:15px;cursor:pointer;transition:border-color .15s,background .15s}
+  .type:hover{border-color:var(--purple-l)}
+  .type.on{border-color:var(--purple);background:var(--tint)}
+  .type .ic{width:34px;height:34px;border-radius:9px;background:var(--line-2);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+  .type.on .ic{background:#fff;color:var(--purple)}
+  .type .ic svg{width:19px;height:19px;stroke-width:1.9;color:var(--slate)}
+  .type.on .ic svg{color:var(--purple)}
+  .type .t{font-weight:700;font-size:14px}
+  .type .dsc{color:var(--muted);font-size:12px;margin-top:3px}
+  .type .chk{float:right;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center}
+  .type.on .chk{border-color:var(--purple);background:var(--purple)}
+  .type.on .chk svg{width:11px;height:11px;color:#fff;stroke-width:3}
+  .type:not(.on) .chk svg{display:none}
+  hr.div{border:0;border-top:1px solid var(--line);margin:22px 0}
+  .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
+
+  /* helper panel */
+  .aside{position:sticky;top:24px}
+  .steps{padding:20px}
+  .steps h3{font-size:13px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px}
+  .stp{display:flex;gap:12px;padding-bottom:16px;position:relative}
+  .stp:last-child{padding-bottom:0}
+  .stp:not(:last-child)::before{content:"";position:absolute;left:13px;top:28px;bottom:2px;width:2px;background:var(--line)}
+  .stp .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--tint);color:var(--purple);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;z-index:1}
+  .stp .b{font-weight:600;font-size:13px}
+  .stp .b small{display:block;color:var(--muted);font-weight:400;font-size:12px;margin-top:2px}
+  .ssl-note{margin-top:4px;display:flex;gap:9px;align-items:flex-start;background:var(--tint);border:1px solid var(--tint-2);border-radius:11px;padding:12px 14px}
+  .ssl-note svg{width:16px;height:16px;color:var(--purple);stroke-width:2;flex:0 0 16px;margin-top:1px}
+  .ssl-note p{font-size:12px;color:var(--slate)}
+  .ssl-note b{color:var(--purple-d)}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}.aside{position:static}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="mk"><img src="img/lamun-logo.png" alt="Lamun"></div><div><b>Lamund</b><small>web server</small></div></div>
+    <nav class="nav">
+      <span class="lbl">Kelola</span>
+      <a class="on" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h10"/></svg> Situs <span class="cnt">6</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg> Sertifikat <span class="cnt">4</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M17 8h4M19 6v4"/></svg> Pengguna <span class="cnt">3</span></a>
+      <span class="lbl">Akun</span>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg> Pengaturan</a>
+    </nav>
+    <div class="foot"><div class="ava">R</div><div class="who">Rani<small>admin</small></div></div>
+  </aside>
+
+  <main class="main">
+    <div class="crumb"><a href="dashboard.html">Situs</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg><span>Situs baru</span></div>
+    <h1 class="h1">Situs baru</h1>
+    <div class="sub">Arahkan domain ke server ini, lalu Lamund yang urus sisanya.</div>
+
+    <div class="grid">
+      <!-- FORM -->
+      <div class="card form">
+        <div class="field">
+          <label for="dom">Domain</label>
+          <div class="input">
+            <span class="pre">https://</span>
+            <input id="dom" class="mono" placeholder="mis. toko.contoh.id" value="app.tokoku.id">
+          </div>
+          <div class="hint">Pastikan record DNS <b>A</b> domain ini mengarah ke <span class="mono">168.110.200.136</span>.</div>
+        </div>
+
+        <div class="field">
+          <label>Jenis situs</label>
+          <div class="types">
+            <div class="type">
+              <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></span>
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h11l5 5v11H4z"/><path d="M14 4v6h6"/></svg></div>
+              <div class="t">Static</div>
+              <div class="dsc">Unggah file HTML/CSS/JS. Cocok untuk web statis &amp; SPA.</div>
+            </div>
+            <div class="type on">
+              <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg></span>
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12h12M12 6l6 6-6 6"/><path d="M20 4v16"/></svg></div>
+              <div class="t">Proxy</div>
+              <div class="dsc">Teruskan ke aplikasi yang sudah jalan di port lain.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field" style="margin-bottom:6px">
+          <label for="tg">Teruskan ke</label>
+          <div class="input">
+            <span class="pre">http://127.0.0.1:</span>
+            <input id="tg" class="mono" placeholder="3000" value="3000">
+          </div>
+          <div class="hint">Alamat aplikasi lokal Anda. Lamund meneruskan trafik masuk ke sini.</div>
+        </div>
+
+        <hr class="div">
+        <div class="actions">
+          <a class="btn" href="dashboard.html">Batal</a>
+          <button class="btn pri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg> Buat situs</button>
+        </div>
+      </div>
+
+      <!-- HELPER -->
+      <aside class="aside">
+        <div class="card steps">
+          <h3>Yang terjadi berikutnya</h3>
+          <div class="stp"><div class="n">1</div><div class="b">Cek DNS<small>Lamund memastikan domain sudah mengarah ke server.</small></div></div>
+          <div class="stp"><div class="n">2</div><div class="b">Terbitkan SSL<small>Sertifikat HTTPS otomatis dari Let's Encrypt.</small></div></div>
+          <div class="stp"><div class="n">3</div><div class="b">Situs hidup<small>Domain aktif dengan HTTPS — biasanya di bawah 1 menit.</small></div></div>
+          <div class="ssl-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg>
+            <p><b>HTTPS otomatis.</b> Anda tidak perlu mengurus sertifikat — Lamund menerbitkan &amp; memperpanjangnya sendiri.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+</body>
+</html>

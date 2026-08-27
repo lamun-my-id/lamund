@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Pengguna</title>
+<script src="theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+  .list{display:flex;flex-direction:column;gap:9px}
+  .u{display:grid;grid-template-columns:1.4fr 1fr 1fr auto;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;box-shadow:0 1px 2px rgba(27,24,50,.03)}
+  .u .who{display:flex;align-items:center;gap:12px;min-width:0}
+  .u .who .ava{width:36px;height:36px;font-size:13px}
+  .u .who .n{font-weight:600;font-size:14px;color:var(--ink)}
+  .u .who .e{color:var(--muted);font-size:12px;font-family:"IBM Plex Mono",monospace}
+  .role{font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px}
+  .role.admin{background:var(--tint);color:var(--purple)} .role.user{background:var(--line-2);color:var(--slate)}
+  .q .qr{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;color:var(--muted)}
+  .q .qr b{color:var(--slate);font-family:"IBM Plex Mono",monospace;font-weight:500}
+  .q .bar{height:5px;border-radius:3px;background:var(--line-2);overflow:hidden}
+  .q .bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--purple-l),var(--purple))}
+  .u .go{width:32px;height:32px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .u .go:hover{border-color:var(--purple);color:var(--purple)}
+  .u .go svg{width:16px;height:16px;stroke-width:2}
+  @media(max-width:820px){.u{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="mk"><img src="img/lamun-logo.png" alt="Lamun"></div><div><b>Lamund</b><small>web server</small></div></div>
+    <nav class="nav">
+      <span class="lbl">Kelola</span>
+      <a href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h10"/></svg> Situs <span class="cnt">6</span></a>
+      <a href="certificates.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg> Sertifikat <span class="cnt">4</span></a>
+      <a class="on" href="users.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M17 8h4M19 6v4"/></svg> Pengguna <span class="cnt">3</span></a>
+      <span class="lbl">Akun</span>
+      <a href="settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg> Pengaturan</a>
+    </nav>
+    <div class="foot"><div class="ava">R</div><div class="who">Rani<small>admin</small></div></div>
+  </aside>
+
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Pengguna</h1><div class="sub">3 pengguna &middot; kelola akses &amp; kuota</div></div>
+      <button class="btn pri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg> Tambah pengguna</button>
+    </div>
+
+    <div class="list">
+      <div class="u">
+        <div class="who"><div class="ava">R</div><div><div class="n">Rani <span class="role admin">admin</span></div><div class="e">rani@studio.dev</div></div></div>
+        <div class="q"><div class="qr"><span>Situs</span><b>4 / ∞</b></div><div class="bar"><i style="width:30%"></i></div></div>
+        <div class="q"><div class="qr"><span>Penyimpanan</span><b>2.6 / ∞ GB</b></div><div class="bar"><i style="width:18%"></i></div></div>
+        <button class="go" aria-label="Kelola Rani"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="u">
+        <div class="who"><div class="ava" style="background:linear-gradient(135deg,#f0b64d,#dd982a)">B</div><div><div class="n">Budi <span class="role user">user</span></div><div class="e">budi@warungbu.id</div></div></div>
+        <div class="q"><div class="qr"><span>Situs</span><b>1 / 2</b></div><div class="bar"><i style="width:50%"></i></div></div>
+        <div class="q"><div class="qr"><span>Penyimpanan</span><b>0.8 / 5 GB</b></div><div class="bar"><i style="width:16%"></i></div></div>
+        <button class="go" aria-label="Kelola Budi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="u">
+        <div class="who"><div class="ava" style="background:linear-gradient(135deg,#35c98a,#129e6a)">S</div><div><div class="n">Sari <span class="role user">user</span></div><div class="e">sari@tokoku.id</div></div></div>
+        <div class="q"><div class="qr"><span>Situs</span><b>2 / 5</b></div><div class="bar"><i style="width:40%"></i></div></div>
+        <div class="q"><div class="qr"><span>Penyimpanan</span><b>1.2 / 15 GB</b></div><div class="bar"><i style="width:8%"></i></div></div>
+        <button class="go" aria-label="Kelola Sari"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

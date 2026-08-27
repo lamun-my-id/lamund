@@ -1,0 +1,19 @@
+/lamund
+/dist/
+*.db
+
+# mockup render artifacts
+web/mockups/*.png
+
+# panel Vue: dependensi & artefak tooling
+# CATATAN: web/dist SENGAJA di-track — di-embed ke binary via go:embed.
+web/node_modules/
+web/tsconfig.tsbuildinfo
+web/.vite-temp/
+
+# secrets — JANGAN pernah commit
+github.env
+*.env
+.env
+*.key
+secret.key

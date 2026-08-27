@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — api.tokoku.id</title>
+<script src="theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .dhead{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:6px}
+  .dhead .title{display:flex;align-items:center;gap:12px}
+  .dhead h1{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:26px;letter-spacing:-.6px;color:var(--ink)}
+  .dhead .subline{display:flex;align-items:center;gap:10px;margin-top:8px;color:var(--muted);font-size:12.5px}
+  .dhead .acts{display:flex;gap:9px}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0}
+  .info{padding:16px 18px}
+  .info .lbl{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+  .info .lbl svg{width:14px;height:14px;stroke-width:2;color:var(--purple-l)}
+  .info .big{font-size:16px;font-weight:600;color:var(--ink)}
+  .info .big.mono{font-family:"IBM Plex Mono",monospace;font-size:15px}
+  .info .meta2{color:var(--muted);font-size:12px;margin-top:4px}
+  .info .meta2 b{color:var(--ok);font-weight:600}
+  .bar{height:6px;border-radius:4px;background:var(--line-2);overflow:hidden;margin-top:11px}
+  .bar i{display:block;height:100%;width:17%;background:linear-gradient(90deg,var(--purple-l),var(--purple))}
+
+  /* log viewer — panel gelap, jujur secara teknis */
+  .logs{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 1px 2px rgba(27,24,50,.03)}
+  .logs .lh{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--card);border-bottom:1px solid var(--line)}
+  .logs .lh .t{font-weight:700;font-size:13px;color:var(--slate);display:flex;align-items:center;gap:8px}
+  .logs .lh .t .live-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+  .logs .lh .r{color:var(--faint);font-size:12px}
+  .term{background:#171426;padding:14px 16px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.9;overflow-x:auto}
+  .ln{white-space:nowrap;color:#b9b3cc}
+  .ln .tm{color:#6a6484}
+  .ln .m{font-weight:600;margin:0 4px}
+  .ln .m.get{color:#8f68e8}.ln .m.post{color:#67d59f}.ln .m.put{color:#e0b64d}
+  .ln .p{color:#d9d4ea}
+  .ln .c{font-weight:600;margin-left:6px}
+  .ln .c.ok{color:#67d59f}.ln .c.redir{color:#8f9bb3}.ln .c.warn{color:#e0b64d}.ln .c.err{color:#f0798a}
+  .ln .ms{color:#6a6484;margin-left:6px}
+  @media (max-width:820px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="mk"><img src="img/lamun-logo.png" alt="Lamun"></div><div><b>Lamund</b><small>web server</small></div></div>
+    <nav class="nav">
+      <span class="lbl">Kelola</span>
+      <a class="on" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h10"/></svg> Situs <span class="cnt">6</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg> Sertifikat <span class="cnt">4</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M17 8h4M19 6v4"/></svg> Pengguna <span class="cnt">3</span></a>
+      <span class="lbl">Akun</span>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg> Pengaturan</a>
+    </nav>
+    <div class="foot"><div class="ava">R</div><div class="who">Rani<small>admin</small></div></div>
+  </aside>
+
+  <main class="main">
+    <div class="crumb"><a href="dashboard.html">Situs</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg><span>api.tokoku.id</span></div>
+
+    <div class="dhead">
+      <div>
+        <div class="title"><span class="pulse"><i></i></span><h1>api.tokoku.id</h1></div>
+        <div class="subline"><span class="tag proxy">Proxy <span class="a">→ 127.0.0.1:3000</span></span> <span>Hidup &middot; 12 hari tanpa henti</span></div>
+      </div>
+      <div class="acts">
+        <a class="btn" href="https://api.tokoku.id" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 4h6v6M20 4l-8 8"/><path d="M18 13v6H5V6h6"/></svg> Kunjungi</a>
+        <button class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12a8 8 0 1 1 2.3 5.6M4 12V7m0 5h5"/></svg> Restart</button>
+        <button class="btn danger" aria-label="Hapus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></button>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card info">
+        <div class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg> Sertifikat SSL</div>
+        <div class="big">Aktif &amp; valid</div>
+        <div class="meta2">Let's Encrypt &middot; habis <b>61 hari</b> lagi &middot; perpanjang otomatis</div>
+      </div>
+      <div class="card info">
+        <div class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12h12M12 6l6 6-6 6"/></svg> Meneruskan ke</div>
+        <div class="big mono">127.0.0.1:3000</div>
+        <div class="meta2">Rata-rata respon <b style="color:var(--slate)">42&nbsp;ms</b></div>
+      </div>
+      <div class="card info">
+        <div class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l3-4 4 3 4-6"/></svg> Trafik hari ini</div>
+        <div class="big">18.492 <span style="font-size:12px;color:var(--muted);font-weight:400">permintaan</span></div>
+        <div class="bar"><i></i></div>
+      </div>
+    </div>
+
+    <div class="logs">
+      <div class="lh">
+        <div class="t"><span class="live-dot"></span> Log akses langsung</div>
+        <div class="r">api.tokoku.id &middot; realtime</div>
+      </div>
+      <div class="term">
+        <div class="ln"><span class="tm">21:36:58</span> <span class="m post">POST</span> <span class="p">/api/orders</span> <span class="c ok">201</span> <span class="ms">38ms</span></div>
+        <div class="ln"><span class="tm">21:36:57</span> <span class="m get">GET</span> <span class="p">/api/products?page=2</span> <span class="c ok">200</span> <span class="ms">29ms</span></div>
+        <div class="ln"><span class="tm">21:36:57</span> <span class="m get">GET</span> <span class="p">/api/cart</span> <span class="c ok">200</span> <span class="ms">17ms</span></div>
+        <div class="ln"><span class="tm">21:36:55</span> <span class="m get">GET</span> <span class="p">/api/products/8823</span> <span class="c redir">304</span> <span class="ms">9ms</span></div>
+        <div class="ln"><span class="tm">21:36:54</span> <span class="m put">PUT</span> <span class="p">/api/cart/items/12</span> <span class="c ok">200</span> <span class="ms">44ms</span></div>
+        <div class="ln"><span class="tm">21:36:52</span> <span class="m post">POST</span> <span class="p">/api/auth/login</span> <span class="c warn">401</span> <span class="ms">61ms</span></div>
+        <div class="ln"><span class="tm">21:36:51</span> <span class="m get">GET</span> <span class="p">/api/products/9910</span> <span class="c err">500</span> <span class="ms">120ms</span></div>
+        <div class="ln"><span class="tm">21:36:49</span> <span class="m get">GET</span> <span class="p">/api/health</span> <span class="c ok">200</span> <span class="ms">3ms</span></div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

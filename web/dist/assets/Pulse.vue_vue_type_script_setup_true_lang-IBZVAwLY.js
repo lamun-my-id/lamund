@@ -1,0 +1,1 @@
+import{d as t,c as a,y as n,b as l,p as o}from"./index-DXorgFZg.js";const m=t({__name:"Pulse",props:{state:{}},setup(e){return(r,s)=>(o(),a("span",{class:n(["pulse",e.state&&e.state!=="on"?e.state:""])},[...s[0]||(s[0]=[l("i",null,null,-1)])],2))}});export{m as _};

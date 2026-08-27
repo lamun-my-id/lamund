@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Arah 1 · Terminal-native</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0a15; --bg-2:#110e1d; --panel:#151221; --panel-2:#1b1730;
+  --line:#26213c; --line-2:#332c4d;
+  --ink:#e9e6f5; --dim:#9a93b8; --faint:#655d82;
+  --violet:#a585f5; --violet-b:#8f68e8; --glow:#b597f7;
+  --ok:#3fd08a; --warn:#f0b64d; --danger:#f0798a; --off:#5a5473;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Space Grotesk",system-ui,sans-serif;color:var(--ink);
+  background:var(--bg);
+  background-image:
+    radial-gradient(900px 500px at 90% -10%,rgba(143,104,232,.10),transparent 60%),
+    linear-gradient(var(--line-2) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line-2) 1px,transparent 1px);
+  background-size:auto, 46px 46px, 46px 46px;
+  background-position:0 0, -1px -1px, -1px -1px;
+  min-height:100vh;-webkit-font-smoothing:antialiased;
+}
+.mono{font-family:"IBM Plex Mono",monospace}
+.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+
+.side{background:linear-gradient(180deg,var(--bg-2),var(--bg));border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:24px;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px}
+.brand .mk{width:32px;height:32px;border:1px solid var(--line-2);background:var(--panel-2);display:grid;place-items:center;box-shadow:0 0 18px -4px rgba(143,104,232,.5)}
+.brand .mk b{color:var(--violet);font-family:"IBM Plex Mono";font-weight:600;font-size:16px}
+.brand h1{font-family:"IBM Plex Mono";font-weight:600;font-size:16px;letter-spacing:-.3px}
+.brand small{display:block;color:var(--faint);font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-family:"IBM Plex Mono"}
+.nav{display:flex;flex-direction:column;gap:1px}
+.nav .lbl{color:var(--faint);font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:10px 10px 5px;font-family:"IBM Plex Mono"}
+.nav a{display:flex;align-items:center;gap:10px;padding:8px 10px;color:var(--dim);font-size:13px;text-decoration:none;font-weight:500;border-left:2px solid transparent;transition:.12s}
+.nav a svg{width:16px;height:16px;stroke-width:1.9}
+.nav a:hover{background:var(--panel);color:var(--ink)}
+.nav a.on{background:var(--panel-2);color:var(--violet);border-left-color:var(--violet)}
+.nav a .cnt{margin-left:auto;font-family:"IBM Plex Mono";font-size:11px;color:var(--faint)}
+.side .foot{margin-top:auto;font-family:"IBM Plex Mono";font-size:11px;color:var(--faint);border-top:1px solid var(--line);padding-top:12px;line-height:1.7}
+.side .foot b{color:var(--dim);font-weight:500}
+
+.main{padding:24px 32px 60px;}
+.crumb{font-family:"IBM Plex Mono";font-size:12px;color:var(--faint);margin-bottom:20px}
+.crumb .p{color:var(--violet)}
+.hero{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--bg-2));padding:22px 24px;margin-bottom:22px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;top:0;right:0;width:200px;height:100%;background:radial-gradient(circle at 100% 0%,rgba(143,104,232,.14),transparent 70%)}
+.hero .k{font-family:"IBM Plex Mono";font-size:12px;color:var(--violet);display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.hero h2{font-weight:600;font-size:26px;letter-spacing:-.6px}
+.hero p{color:var(--dim);font-size:13.5px;margin-top:6px;max-width:52ch}
+.hero .cta{position:absolute;right:24px;bottom:22px;display:flex;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-family:"IBM Plex Mono";font-size:12.5px;font-weight:500;padding:10px 16px;border:1px solid var(--violet-b);background:rgba(143,104,232,.12);color:var(--glow);cursor:pointer;transition:.14s}
+.btn:hover{background:var(--violet-b);color:#fff;box-shadow:0 0 20px -4px rgba(143,104,232,.8)}
+.btn svg{width:15px;height:15px;stroke-width:2.2}
+.btn.g{border-color:var(--line-2);background:transparent;color:var(--dim)}
+.btn.g:hover{border-color:var(--violet-b);color:var(--glow);box-shadow:none;background:var(--panel-2)}
+
+/* metric bar */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);margin-bottom:24px;background:var(--panel)}
+.metrics>div{padding:15px 18px;border-right:1px solid var(--line)}
+.metrics>div:last-child{border-right:0}
+.metrics .n{font-family:"IBM Plex Mono";font-weight:600;font-size:24px}
+.metrics .n.v{color:var(--violet)}.metrics .n.g{color:var(--ok)}
+.metrics .l{color:var(--faint);font-size:10.5px;text-transform:uppercase;letter-spacing:.13em;font-family:"IBM Plex Mono";margin-top:4px}
+
+.pulse{position:relative;width:9px;height:9px;flex:0 0 9px}
+.pulse i{position:absolute;inset:0;border-radius:50%;background:var(--violet);box-shadow:0 0 9px rgba(143,104,232,.9)}
+.pulse i::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--violet);animation:breathe 2.6s ease-out infinite}
+@keyframes breathe{0%{transform:scale(1);opacity:.6}70%{transform:scale(3.4);opacity:0}100%{opacity:0}}
+.pulse.warn i,.pulse.warn i::before{background:var(--warn)}.pulse.off i{background:var(--off)}.pulse.off i::before{display:none}
+
+.secbar{display:flex;align-items:center;gap:10px;margin:4px 0 10px;font-family:"IBM Plex Mono"}
+.secbar h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.secbar .rule{flex:1;height:1px;background:var(--line)}
+.secbar .c{font-size:11px;color:var(--faint)}
+
+/* table */
+.tbl{border:1px solid var(--line);background:var(--panel)}
+.tbl .r{display:grid;grid-template-columns:20px 1fr 130px 150px 40px;align-items:center;gap:14px;padding:13px 18px;border-bottom:1px solid var(--line);transition:.12s}
+.tbl .r:last-child{border-bottom:0}
+.tbl .r:hover{background:var(--panel-2)}
+.tbl .dom{font-family:"IBM Plex Mono";font-size:13.5px;font-weight:500;color:var(--ink)}
+.tbl .meta{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--faint);margin-top:3px}
+.tag{font-family:"IBM Plex Mono";font-size:10.5px;font-weight:500;padding:2px 7px;border:1px solid var(--line-2)}
+.tag.t-app{color:var(--violet);border-color:var(--violet-b)}
+.tag.static{color:var(--dim)}
+.tag.proxy{color:var(--ok);border-color:rgba(63,208,138,.4)}
+.st{font-family:"IBM Plex Mono";font-size:12px;display:flex;align-items:center;gap:8px}
+.st.ok{color:var(--ok)} .st.warn{color:var(--warn)}
+.st.warn .spin{width:11px;height:11px;border:2px solid var(--line-2);border-top-color:var(--warn);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.col-r{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--faint);text-align:right}
+.col-r b{display:block;color:var(--dim);font-weight:500;font-size:12px}
+.go{color:var(--faint);cursor:pointer}.go:hover{color:var(--violet)}
+.go svg{width:16px;height:16px;stroke-width:2}
+
+@media(max-width:720px){.app{grid-template-columns:1fr}.side{display:none}.metrics{grid-template-columns:repeat(2,1fr)}.tbl .r{grid-template-columns:20px 1fr auto}.tbl .col-r,.tbl .st{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="mk"><b>~</b></div><div><h1>lamund</h1><small>webserver</small></div></div>
+    <nav class="nav">
+      <span class="lbl"># manage</span>
+      <a class="on" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h10"/></svg> overview <span class="cnt">7</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18"/></svg> sites <span class="cnt">4</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M9 9h6v6H9z"/></svg> apps <span class="cnt">3</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg> certs</a>
+      <span class="lbl"># account</span>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/></svg> users</a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3"/></svg> settings</a>
+    </nav>
+    <div class="foot">lamund <b>v0.1.0</b><br>arm64 · non-root<br><span style="color:var(--ok)">● all systems go</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="crumb"><span class="p">lamund</span>@batam:~$ overview</div>
+
+    <div class="hero">
+      <div class="k"><span class="pulse"><i></i></span> STATUS: 7 deployments · 0 errors · uptime 99.9%</div>
+      <h2>Overview</h2>
+      <p>Situs, proxy, dan aplikasi terkelola — auto-HTTPS, build, dan zero-downtime deploy.</p>
+      <div class="cta">
+        <button class="btn g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 17l6-6-6-6M12 19h8"/></svg> lamund apply</button>
+        <button class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg> new</button>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div><div class="n v">7</div><div class="l">deployments</div></div>
+      <div><div class="n">3</div><div class="l">apps running</div></div>
+      <div><div class="n g">7</div><div class="l">certs valid</div></div>
+      <div><div class="n">99.9%</div><div class="l">uptime 30d</div></div>
+    </div>
+
+    <div class="secbar"><h3>apps</h3><span class="rule"></span><span class="c">3 running</span></div>
+    <div class="tbl">
+      <div class="r">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">svc.lamund.lamun.my.id</div><div class="meta"><span class="tag t-app">node</span> node@20.11.1 · :50001</div></div>
+        <div class="st ok"><span class="pulse" style="width:7px;height:7px;flex:0 0 7px"><i></i></span> running</div>
+        <div class="col-r">deployed<b>2m ago · #a9f</b></div>
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </div>
+      <div class="r">
+        <span class="pulse warn"><i></i></span>
+        <div><div class="dom">gitdemo.lamund.lamun.my.id</div><div class="meta"><span class="tag t-app">git</span> acme/api@main · npm run build</div></div>
+        <div class="st warn"><span class="spin"></span> building</div>
+        <div class="col-r">push<b>just now · #4c1</b></div>
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </div>
+      <div class="r">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">run.lamund.lamun.my.id</div><div class="meta"><span class="tag t-app">python</span> python@3.12 · :40003</div></div>
+        <div class="st ok"><span class="pulse" style="width:7px;height:7px;flex:0 0 7px"><i></i></span> running</div>
+        <div class="col-r">uptime<b>3d 4h</b></div>
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </div>
+    </div>
+
+    <div class="secbar" style="margin-top:24px"><h3>sites</h3><span class="rule"></span><span class="c">4 active</span></div>
+    <div class="tbl">
+      <div class="r">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">app.lamund.lamun.my.id</div><div class="meta"><span class="tag static">static</span> SPA · 24 files · gzip+cache</div></div>
+        <div class="st ok">https ✓</div>
+        <div class="col-r">cert<b>YE1 · 89d</b></div>
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </div>
+      <div class="r">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">test.lamund.lamun.my.id</div><div class="meta"><span class="tag proxy">proxy</span> → 127.0.0.1:3000</div></div>
+        <div class="st ok">https ✓</div>
+        <div class="col-r">cert<b>YE1 · 89d</b></div>
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

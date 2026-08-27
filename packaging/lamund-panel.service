@@ -1,0 +1,41 @@
+[Unit]
+Description=Lamund control plane — panel web + REST API (loopback)
+Documentation=https://github.com/lamun-my-id/lamund
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=lamund
+Group=lamund
+WorkingDirectory=/var/lib/lamund
+
+# Panel + API di loopback saja; taruh di balik reverse proxy/SSH tunnel bila
+# perlu diakses jarak jauh. Tak butuh kapabilitas port istimewa.
+# Bila memakai fitur DNS: tambahkan `--public-ip <IP>` (sama dgn data plane) di
+# baris ExecStart agar panel bisa tampilkan glue nameserver & auto-provision
+# record A/AAAA saat bikin site.
+ExecStart=/usr/local/bin/lamund api \
+  --db /var/lib/lamund/lamund.db \
+  --addr 127.0.0.1:8080 \
+  --secret-file /var/lib/lamund/secret.key
+
+Restart=on-failure
+RestartSec=3s
+
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/lamund
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Pilih Arah Redesign</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter",system-ui,sans-serif;background:#0e0b1a;color:#e9e6f5;min-height:100vh;padding:48px 24px}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font-family:"Bricolage Grotesque";font-size:34px;letter-spacing:-1px;margin-bottom:6px}
+p.sub{color:#9a93b8;margin-bottom:36px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#151221;border:1px solid #26213c;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:#8f68e8;box-shadow:0 20px 40px -20px rgba(143,104,232,.5)}
+.card .sw{height:120px;display:flex;align-items:center;justify-content:center;font-family:"Bricolage Grotesque";font-size:44px;font-weight:800}
+.sw1{background:#0c0a15;color:#a585f5;background-image:linear-gradient(#332c4d 1px,transparent 1px),linear-gradient(90deg,#332c4d 1px,transparent 1px);background-size:20px 20px}
+.sw2{background:linear-gradient(135deg,#f2eeff,#fff);color:#4d3095}
+.sw3{background:linear-gradient(135deg,#7ed3c7,#8f68e8);color:#fff}
+.card .b{padding:18px 20px}
+.card h2{font-size:17px;margin-bottom:5px}
+.card small{color:#9a93b8;font-size:13px;line-height:1.5;display:block}
+.card .go{margin-top:12px;color:#a585f5;font-weight:600;font-size:13px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Pilih arah redesign panel Lamund</h1>
+  <p class="sub">Layar yang sama (Overview) dalam tiga karakter. Buka masing-masing, bandingkan, pilih satu (atau campuran).</p>
+  <div class="grid">
+    <a class="card" href="1-terminal.html">
+      <div class="sw sw1">~_</div>
+      <div class="b"><h2>1 · Terminal-native</h2><small>Gelap, monospace, garis grid, sudut tajam. Rasa control-panel buat engineer. Paling beda dari kompetitor.</small><div class="go">Lihat →</div></div>
+    </a>
+    <a class="card" href="2-editorial.html">
+      <div class="sw sw2">Aa</div>
+      <div class="b"><h2>2 · Calm Violet / Editorial</h2><small>Terang, lapang, Bricolage Grotesque, whitespace banyak, denyut violet. Rasa SaaS premium. Kandidat kuatmu.</small><div class="go">Lihat →</div></div>
+    </a>
+    <a class="card" href="3-seagrass.html">
+      <div class="sw sw3">≈</div>
+      <div class="b"><h2>3 · Organic / Seagrass</h2><small>Motif arus/gelombang, kurva organik, aksen laut (teal) + ungu. Main ke arti "lamun". Paling distinctive.</small><div class="go">Lihat →</div></div>
+    </a>
+  </div>
+</div>
+</body>
+</html>

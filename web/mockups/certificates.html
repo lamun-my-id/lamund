@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Sertifikat</title>
+<script src="theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .list{display:flex;flex-direction:column;gap:9px;margin-top:20px}
+  .cert{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;box-shadow:0 1px 2px rgba(27,24,50,.03)}
+  .cert .d{font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:500;color:var(--ink)}
+  .cert .iss{color:var(--muted);font-size:12px;margin-top:3px}
+  .life{min-width:170px}
+  .life .row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px}
+  .life .row .lbl{color:var(--muted)}.life .row .val{font-family:"IBM Plex Mono",monospace;color:var(--slate);font-weight:500}
+  .life .bar{height:6px;border-radius:4px;background:var(--line-2);overflow:hidden}
+  .life .bar i{display:block;height:100%;border-radius:4px}
+  .st{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;white-space:nowrap}
+  .st svg{width:14px;height:14px;stroke-width:2.4}
+  .st.ok{color:var(--ok)} .st.soon{color:var(--warn)} .st.pending{color:var(--warn)} .st.none{color:var(--off)}
+  @media(max-width:820px){.cert{grid-template-columns:1fr}.life{min-width:0}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="mk"><img src="img/lamun-logo.png" alt="Lamun"></div><div><b>Lamund</b><small>web server</small></div></div>
+    <nav class="nav">
+      <span class="lbl">Kelola</span>
+      <a href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h10"/></svg> Situs <span class="cnt">6</span></a>
+      <a class="on" href="certificates.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg> Sertifikat <span class="cnt">4</span></a>
+      <a href="users.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M17 8h4M19 6v4"/></svg> Pengguna <span class="cnt">3</span></a>
+      <span class="lbl">Akun</span>
+      <a href="settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg> Pengaturan</a>
+    </nav>
+    <div class="foot"><div class="ava">R</div><div class="who">Rani<small>admin</small></div></div>
+  </aside>
+
+  <main class="main">
+    <div><h1 class="h1">Sertifikat</h1><div class="sub">HTTPS otomatis dari Let's Encrypt &middot; <b>diperpanjang sendiri</b>, tak perlu diurus</div></div>
+
+    <div class="list">
+      <div class="cert">
+        <div><div class="d">docs.lamund.dev</div><div class="iss">Let's Encrypt R3 &middot; terbit 20 Mei 2026</div></div>
+        <div class="life"><div class="row"><span class="lbl">Sisa berlaku</span><span class="val">89 hari</span></div><div class="bar"><i style="width:74%;background:linear-gradient(90deg,var(--purple-l),var(--purple))"></i></div></div>
+        <div class="st ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>Valid</div>
+      </div>
+      <div class="cert">
+        <div><div class="d">blog.rani.dev</div><div class="iss">Let's Encrypt R3 &middot; terbit 9 Mei 2026</div></div>
+        <div class="life"><div class="row"><span class="lbl">Sisa berlaku</span><span class="val">78 hari</span></div><div class="bar"><i style="width:65%;background:linear-gradient(90deg,var(--purple-l),var(--purple))"></i></div></div>
+        <div class="st ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>Valid</div>
+      </div>
+      <div class="cert">
+        <div><div class="d">api.tokoku.id</div><div class="iss">Let's Encrypt R3 &middot; terbit 22 Apr 2026</div></div>
+        <div class="life"><div class="row"><span class="lbl">Sisa berlaku</span><span class="val">61 hari</span></div><div class="bar"><i style="width:51%;background:linear-gradient(90deg,var(--purple-l),var(--purple))"></i></div></div>
+        <div class="st ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>Valid</div>
+      </div>
+      <div class="cert">
+        <div><div class="d">staging.tokoku.id</div><div class="iss">Let's Encrypt R3 &middot; perpanjang dijadwalkan</div></div>
+        <div class="life"><div class="row"><span class="lbl">Sisa berlaku</span><span class="val">24 hari</span></div><div class="bar"><i style="width:20%;background:var(--warn)"></i></div></div>
+        <div class="st soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12a8 8 0 1 1 2.3 5.6M4 12V7m0 5h5"/></svg>Perpanjang &lt;30h</div>
+      </div>
+      <div class="cert">
+        <div><div class="d">shop.warungbu.id</div><div class="iss">Menunggu DNS mengarah ke server</div></div>
+        <div class="life"><div class="row"><span class="lbl">Status</span><span class="val">—</span></div><div class="bar"></div></div>
+        <div class="st pending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Menunggu DNS</div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

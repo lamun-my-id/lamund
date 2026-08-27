@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Pengaturan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side" data-active="settings"></aside>
+  <main class="main">
+    <div class="page-head"><div><div class="h1">Pengaturan</div><div class="sub">Akun, keamanan, dan preferensi.</div></div></div>
+
+    <div>
+      <div class="sub" style="margin:4px 0 10px;font-weight:600;color:var(--slate)">Akun</div>
+      <div class="menu" style="margin-bottom:22px">
+        <button class="mrow" onclick="openM('m-akun')">
+          <span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/></svg></span>
+          <span class="ml"><b>Edit akun</b><small>Nama, username, email</small></span>
+          <span class="mval">Rani P. · @rani</span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+        </button>
+        <button class="mrow" onclick="openM('m-sandi')">
+          <span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+          <span class="ml"><b>Ganti kata sandi</b><small>Perbarui sandi login</small></span>
+          <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+        </button>
+        <button class="mrow" onclick="openM('m-conn')">
+          <span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg></span>
+          <span class="ml"><b>Akun terhubung</b><small>GitHub, dan penyedia AI (segera)</small></span>
+          <span class="mval">GitHub +3</span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+        </button>
+        <button class="mrow" onclick="openM('m-keys')">
+          <span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="8" cy="15" r="4"/><path d="M10.5 12.5L20 3M17 6l2 2M15 8l2 2"/></svg></span>
+          <span class="ml"><b>API keys</b><small>Akses programatik</small></span>
+          <span class="mval">2 aktif</span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+        </button>
+      </div>
+
+      <div class="sub" style="margin:4px 0 10px;font-weight:600;color:var(--slate)">Preferensi</div>
+      <div class="menu" style="margin-bottom:22px">
+        <button class="mrow" onclick="openM('m-tema')">
+          <span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18 4.5 4.5 0 0 1 0-9 4.5 4.5 0 0 0 0-9z"/></svg></span>
+          <span class="ml"><b>Tema panel</b><small>Editorial, Terminal, Seagrass</small></span>
+          <span class="mval" id="cur-theme">Editorial</span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+        </button>
+        <button class="mrow" onclick="openM('m-lang')">
+          <span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span>
+          <span class="ml"><b>Bahasa / Language</b><small>Default server: English</small></span>
+          <span class="mval">🇮🇩 Indonesia</span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+        </button>
+      </div>
+
+      <div class="menu">
+        <a class="mrow danger" href="login.html">
+          <span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></span>
+          <span class="ml"><b>Logout</b><small>Keluar dari sesi ini</small></span>
+          <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- MODALS -->
+<div class="modal" id="m-akun"><div class="modal-box">
+  <div class="modal-head"><h3>Edit akun</h3><button class="modal-x" onclick="closeM('m-akun')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="modal-body">
+    <div class="field"><label>Nama</label><div class="input"><input value="Rani P."></div></div>
+    <div class="field"><label>Username</label><div class="input"><span class="pre">@</span><input value="rani"></div></div>
+    <div class="field" style="margin:0"><label>Email</label><div class="input"><input value="rani@studio.dev"></div></div>
+  </div>
+  <div class="modal-foot"><button class="btn" onclick="closeM('m-akun')">Batal</button><button class="btn pri" onclick="closeM('m-akun')">Simpan</button></div>
+</div></div>
+
+<div class="modal" id="m-sandi"><div class="modal-box">
+  <div class="modal-head"><h3>Ganti kata sandi</h3><button class="modal-x" onclick="closeM('m-sandi')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="modal-body">
+    <div class="field"><label>Kata sandi sekarang</label><div class="input"><input type="password" placeholder="••••••••"></div></div>
+    <div class="field" style="margin:0"><label>Kata sandi baru (min 8)</label><div class="input"><input type="password" placeholder="••••••••"></div></div>
+  </div>
+  <div class="modal-foot"><button class="btn" onclick="closeM('m-sandi')">Batal</button><button class="btn pri" onclick="closeM('m-sandi')">Ganti sandi</button></div>
+</div></div>
+
+<div class="modal" id="m-lang"><div class="modal-box">
+  <div class="modal-head"><h3>Bahasa / Language</h3><button class="modal-x" onclick="closeM('m-lang')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="modal-body"><div class="langs">
+    <button type="button" class="lang"><span class="fl">🇬🇧</span><b>English</b><small>default</small></button>
+    <button type="button" class="lang on"><span class="fl">🇮🇩</span><b>Indonesia</b><small>Bahasa Indonesia</small></button>
+    <button type="button" class="lang"><span class="fl">🇯🇵</span><b>Japanese</b><small>日本語</small></button>
+    <button type="button" class="lang"><span class="fl">🌾</span><b>Sunda</b><small>Basa Sunda</small></button>
+  </div></div>
+  <div class="modal-foot"><button class="btn pri" onclick="closeM('m-lang')">Selesai</button></div>
+</div></div>
+
+<div class="modal" id="m-tema"><div class="modal-box">
+  <div class="modal-head"><h3>Tema panel</h3><button class="modal-x" onclick="closeM('m-tema')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="modal-body"><div class="themes">
+    <button type="button" class="theme-card on" data-theme="editorial" onclick="lamundSetTheme('editorial');document.getElementById('cur-theme').textContent='Editorial'"><div class="sw sw-editorial">Aa</div><div class="tb"><b>Editorial</b><small>Terang · ungu</small></div></button>
+    <button type="button" class="theme-card" data-theme="terminal" onclick="lamundSetTheme('terminal');document.getElementById('cur-theme').textContent='Terminal'"><div class="sw sw-terminal">~_</div><div class="tb"><b>Terminal</b><small>Gelap · mono</small></div></button>
+    <button type="button" class="theme-card" data-theme="seagrass" onclick="lamundSetTheme('seagrass');document.getElementById('cur-theme').textContent='Seagrass'"><div class="sw sw-seagrass">≈</div><div class="tb"><b>Seagrass</b><small>Organik · teal</small></div></button>
+  </div></div>
+  <div class="modal-foot"><button class="btn pri" onclick="closeM('m-tema')">Selesai</button></div>
+</div></div>
+
+<div class="modal" id="m-conn"><div class="modal-box">
+  <div class="modal-head"><h3>Akun terhubung</h3><button class="modal-x" onclick="closeM('m-conn')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="modal-body"><div class="conns">
+    <div class="conn"><span class="ic" style="background:#24292f;color:#fff">GH</span><div class="ct"><b>GitHub</b><small>Terhubung sebagai <span class="mono">@rani</span></small></div><button class="btn sm">Putuskan</button></div>
+    <div class="conn"><span class="ic" style="background:#0b8a6b;color:#fff">AI</span><div class="ct"><b>OpenAI</b><small>Fitur AI <span class="preview-tag">segera</span></small></div><button class="btn sm">Hubungkan</button></div>
+    <div class="conn"><span class="ic" style="background:#d97757;color:#fff">A</span><div class="ct"><b>Anthropic</b><small>Claude <span class="preview-tag">segera</span></small></div><button class="btn sm">Hubungkan</button></div>
+    <div class="conn"><span class="ic" style="background:#4285f4;color:#fff">G</span><div class="ct"><b>Gemini</b><small>Google AI <span class="preview-tag">segera</span></small></div><button class="btn sm">Hubungkan</button></div>
+  </div></div>
+</div></div>
+
+<div class="modal" id="m-keys"><div class="modal-box lg">
+  <div class="modal-head"><h3>API keys</h3><button class="modal-x" onclick="closeM('m-keys')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="modal-body">
+    <div style="display:flex;gap:10px;margin-bottom:16px"><div class="input" style="flex:1"><input placeholder="Nama key, mis. deploy-ci"></div><button class="btn pri">Buat key</button></div>
+    <table class="tbl">
+      <thead><tr><th>Nama</th><th>Terakhir dipakai</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><b>deploy-ci</b></td><td class="mono" style="color:var(--muted)">2026-08-21</td><td style="text-align:right"><button class="btn sm danger">Hapus</button></td></tr>
+        <tr><td><b>mobile-app</b></td><td style="color:var(--muted)">belum pernah</td><td style="text-align:right"><button class="btn sm danger">Hapus</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></div>
+
+<script src="shell.js"></script>
+<script>lamundSetTheme(localStorage.getItem('lamund-theme')||'editorial');document.getElementById('cur-theme').textContent={editorial:'Editorial',terminal:'Terminal',seagrass:'Seagrass'}[localStorage.getItem('lamund-theme')||'editorial'];</script>
+</body>
+</html>

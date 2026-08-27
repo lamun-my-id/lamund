@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Setup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="auth-wrap">
+  <form class="auth-box" onsubmit="location.href='index.html';return false">
+    <div class="auth-head">
+      <div class="mk"><b>L</b></div>
+      <h1>Selamat datang 👋</h1>
+      <p>Server baru terpasang. Buat akun admin untuk memulai.</p>
+    </div>
+    <div class="steps"><span class="s on"></span><span class="s on"></span><span class="s"></span></div>
+    <div class="card panel">
+      <div class="field"><label>Bahasa panel / Language</label>
+        <div class="langs">
+          <button type="button" class="lang on"><span class="fl">🇬🇧</span><b>English</b><small>default</small></button>
+          <button type="button" class="lang"><span class="fl">🇮🇩</span><b>Indonesia</b><small>Indonesia</small></button>
+          <button type="button" class="lang"><span class="fl">🇯🇵</span><b>日本語</b><small>Japanese</small></button>
+          <button type="button" class="lang"><span class="fl">🌾</span><b>Sunda</b><small>Basa Sunda</small></button>
+        </div>
+      </div>
+      <div class="field"><label>Nama pengguna admin</label><div class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/></svg><input placeholder="admin"></div></div>
+      <div class="field"><label>Kata sandi</label><div class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><input type="password" placeholder="min 8 karakter"></div></div>
+      <div class="field" style="margin-bottom:20px"><label>Ulangi kata sandi</label><div class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><input type="password" placeholder="ulangi"></div></div>
+      <button class="btn pri block" type="submit">Buat akun &amp; mulai</button>
+    </div>
+    <div class="auth-foot">Langkah ini hanya muncul saat pertama kali · <b>lamund v0.1.0</b></div>
+  </form>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

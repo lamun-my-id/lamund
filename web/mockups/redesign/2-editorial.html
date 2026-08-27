@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Arah 2 · Calm Violet / Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#4d3095; --purple-d:#3a2470; --purple-l:#8f68e8; --glow:#b597f7;
+  --tint:#f2eeff; --tint-2:#e7dcff;
+  --ink:#191527; --slate:#3d3a52; --muted:#847e9c; --faint:#b3aecb;
+  --line:#ece8f6; --line-2:#f4f1fb;
+  --canvas:#f7f6fc; --card:#ffffff;
+  --ok:#12a06b; --warn:#dd982a; --off:#b9b6c9; --danger:#d64550;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Inter",system-ui,sans-serif;color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 88% -15%,rgba(143,104,232,.14),transparent 55%),
+    radial-gradient(700px 500px at -5% 105%,rgba(77,48,149,.05),transparent 55%),
+    var(--canvas);
+  min-height:100vh;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+.mono{font-family:"IBM Plex Mono",monospace}
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+
+/* sidebar */
+.side{padding:26px 18px;display:flex;flex-direction:column;gap:30px;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:12px;padding:0 8px}
+.brand .mk{width:38px;height:38px;border-radius:12px;background:linear-gradient(140deg,var(--purple-l),var(--purple));display:grid;place-items:center;box-shadow:0 8px 22px -8px rgba(77,48,149,.7)}
+.brand .mk b{color:#fff;font-family:"Bricolage Grotesque";font-size:20px}
+.brand h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:21px;letter-spacing:-.5px}
+.brand small{display:block;color:var(--faint);font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin-top:-3px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav .lbl{color:var(--faint);font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px 5px}
+.nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:11px;color:var(--muted);font-size:14px;font-weight:500;text-decoration:none;transition:.15s}
+.nav a svg{width:18px;height:18px;stroke-width:1.9;opacity:.85}
+.nav a:hover{background:var(--line-2);color:var(--slate)}
+.nav a.on{background:#fff;color:var(--purple-d);font-weight:600;box-shadow:0 4px 14px -6px rgba(77,48,149,.25)}
+.nav a.on svg{color:var(--purple);opacity:1}
+.nav a .cnt{margin-left:auto;font-family:"IBM Plex Mono";font-size:12px;color:var(--faint)}
+.side .foot{margin-top:auto;display:flex;align-items:center;gap:11px;padding:12px;border-radius:12px;background:#fff;box-shadow:0 4px 14px -8px rgba(77,48,149,.2)}
+.ava{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--purple-l),var(--purple));color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.foot .who{font-size:13px;font-weight:600;color:var(--slate)}
+.foot .who small{display:block;color:var(--faint);font-size:11px;font-weight:400}
+
+/* main */
+.main{padding:34px 44px 60px;}
+.hero{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px;flex-wrap:wrap}
+.hero .eyebrow{color:var(--purple);font-weight:600;font-size:13px;letter-spacing:.02em;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.hero h2{font-family:"Bricolage Grotesque";font-weight:800;font-size:44px;line-height:1.02;letter-spacing:-1.4px;max-width:16ch}
+.hero h2 em{font-style:normal;color:var(--purple)}
+.hero .sub{color:var(--muted);font-size:15px;margin-top:12px;max-width:44ch}
+.btn{display:inline-flex;align-items:center;gap:9px;font:inherit;font-size:14px;font-weight:600;padding:13px 20px;border-radius:12px;border:0;background:var(--purple);color:#fff;cursor:pointer;box-shadow:0 12px 26px -12px rgba(77,48,149,1);transition:.15s}
+.btn svg{width:17px;height:17px;stroke-width:2.3}
+.btn:hover{background:var(--purple-d);transform:translateY(-1px)}
+.btn.ghost{background:#fff;color:var(--slate);box-shadow:0 4px 14px -8px rgba(0,0,0,.15)}
+.btn.ghost:hover{color:var(--purple)}
+
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:30px}
+.stat{background:var(--card);border-radius:16px;padding:18px 20px;box-shadow:0 1px 2px rgba(25,21,39,.03),0 10px 30px -22px rgba(77,48,149,.4)}
+.stat .n{font-family:"Bricolage Grotesque";font-weight:700;font-size:30px;letter-spacing:-1px;line-height:1}
+.stat .l{color:var(--muted);font-size:12.5px;margin-top:7px;display:flex;align-items:center;gap:6px}
+.stat .l .dot{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+
+/* pulse signature */
+.pulse{position:relative;width:11px;height:11px;flex:0 0 11px}
+.pulse i{position:absolute;inset:0;border-radius:50%;background:var(--purple-l);box-shadow:0 0 10px rgba(143,104,232,.85)}
+.pulse i::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--purple-l);animation:breathe 2.8s ease-out infinite}
+@keyframes breathe{0%{transform:scale(1);opacity:.55}70%{transform:scale(3.6);opacity:0}100%{opacity:0}}
+.pulse.off i{background:var(--off);box-shadow:none}.pulse.off i::before{display:none}
+.pulse.warn i,.pulse.warn i::before{background:var(--warn)}.pulse.warn i{box-shadow:0 0 10px rgba(221,152,42,.7)}
+
+.sec{display:flex;align-items:baseline;justify-content:space-between;margin:6px 4px 14px}
+.sec h3{font-family:"Bricolage Grotesque";font-weight:700;font-size:18px;letter-spacing:-.3px}
+.sec a{color:var(--purple);font-size:13px;font-weight:600;text-decoration:none}
+
+/* deployment cards */
+.list{display:flex;flex-direction:column;gap:12px}
+.row{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:18px;background:var(--card);border-radius:16px;padding:18px 22px;box-shadow:0 1px 2px rgba(25,21,39,.03),0 12px 34px -26px rgba(77,48,149,.5);transition:.18s}
+.row:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(25,21,39,.03),0 20px 40px -24px rgba(77,48,149,.55)}
+.row .dom{font-weight:600;font-size:15.5px;letter-spacing:-.2px}
+.row .meta{color:var(--muted);font-size:12.5px;margin-top:3px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px}
+.tag.t-app{background:var(--tint);color:var(--purple)}
+.tag.static{background:var(--line);color:var(--slate)}
+.tag.proxy{background:#eafaf3;color:var(--ok)}
+.row .side-info{text-align:right;font-size:12px;color:var(--muted)}
+.row .side-info b{display:block;color:var(--slate);font-family:"IBM Plex Mono";font-size:12.5px;font-weight:500}
+.mini{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600}
+.mini.ok{color:var(--ok)} .mini.build{color:var(--warn)}
+.spin{width:13px;height:13px;border:2px solid var(--tint-2);border-top-color:var(--warn);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.act{width:38px;height:38px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--muted);display:grid;place-items:center;cursor:pointer;transition:.15s}
+.act:hover{border-color:var(--purple-l);color:var(--purple)}
+.act svg{width:17px;height:17px;stroke-width:2}
+
+.footnote{margin-top:40px;text-align:center;color:var(--faint);font-size:12px}
+.footnote b{color:var(--muted);font-family:"IBM Plex Mono";font-weight:500}
+@media(max-width:720px){.app{grid-template-columns:1fr}.side{display:none}.stats{grid-template-columns:repeat(2,1fr)}.hero h2{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <div class="mk"><b>L</b></div>
+      <div><h1>Lamund</h1><small>hosting platform</small></div>
+    </div>
+    <nav class="nav">
+      <span class="lbl">Kelola</span>
+      <a class="on" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Overview <span class="cnt">7</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg> Situs <span class="cnt">4</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg> Aplikasi <span class="cnt">3</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg> Sertifikat</a>
+      <span class="lbl">Akun</span>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/></svg> Pengguna</a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg> Pengaturan</a>
+    </nav>
+    <div class="foot"><div class="ava">A</div><div class="who">Admin<small>lamun.my.id</small></div></div>
+  </aside>
+
+  <main class="main">
+    <div class="hero">
+      <div>
+        <div class="eyebrow"><span class="pulse"><i></i></span> 7 deployment · semua sehat</div>
+        <h2>Semua yang kamu jalankan, <em>satu tempat.</em></h2>
+        <p class="sub">Situs statis, reverse-proxy, dan aplikasi — dengan HTTPS otomatis dan deploy tanpa henti.</p>
+      </div>
+      <button class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg> Deployment baru</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">7</div><div class="l"><span class="dot"></span> deployment aktif</div></div>
+      <div class="stat"><div class="n">3</div><div class="l"><span class="dot"></span> aplikasi berjalan</div></div>
+      <div class="stat"><div class="n">7</div><div class="l"><span class="dot"></span> sertifikat valid</div></div>
+      <div class="stat"><div class="n" style="color:var(--purple)">99.9%</div><div class="l">uptime 30 hari</div></div>
+    </div>
+
+    <div class="sec"><h3>Aplikasi</h3><a href="#">Kelola semua →</a></div>
+    <div class="list">
+      <div class="row">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">svc.lamund.lamun.my.id</div><div class="meta"><span class="tag t-app">app · node</span> <span class="mono">v20.11.1</span> · <span class="mono">:50001</span></div></div>
+        <div class="side-info"><span class="mini ok"><span class="pulse" style="width:8px;height:8px;flex:0 0 8px"><i></i></span> berjalan</span><b>deploy 2 mnt lalu</b></div>
+        <button class="act" title="Buka"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+      </div>
+      <div class="row">
+        <span class="pulse warn"><i></i></span>
+        <div><div class="dom">gitdemo.lamund.lamun.my.id</div><div class="meta"><span class="tag t-app">app · git</span> github.com/acme/api · <span class="mono">main</span></div></div>
+        <div class="side-info"><span class="mini build"><span class="spin"></span> build…</span><b>npm run build</b></div>
+        <button class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+      </div>
+      <div class="row">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">run.lamund.lamun.my.id</div><div class="meta"><span class="tag t-app">app · python</span> <span class="mono">:40003</span></div></div>
+        <div class="side-info"><span class="mini ok"><span class="pulse" style="width:8px;height:8px;flex:0 0 8px"><i></i></span> berjalan</span><b>uptime 3 hari</b></div>
+        <button class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+      </div>
+    </div>
+
+    <div class="sec" style="margin-top:30px"><h3>Situs</h3><a href="#">Kelola semua →</a></div>
+    <div class="list">
+      <div class="row">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">app.lamund.lamun.my.id</div><div class="meta"><span class="tag static">statis</span> SPA · 24 berkas</div></div>
+        <div class="side-info"><span class="mini ok">HTTPS aktif</span><b>YE1 · 89 hari</b></div>
+        <button class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+      </div>
+      <div class="row">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">test.lamund.lamun.my.id</div><div class="meta"><span class="tag proxy">proxy</span> → <span class="mono">127.0.0.1:3000</span></div></div>
+        <div class="side-info"><span class="mini ok">HTTPS aktif</span><b>YE1 · 89 hari</b></div>
+        <button class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+      </div>
+    </div>
+
+    <div class="footnote">Dikelola oleh <b>lamund v0.1.0</b> · Arah 2 — Calm Violet / Editorial</div>
+  </main>
+</div>
+</body>
+</html>

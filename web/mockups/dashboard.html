@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Situs</title>
+<script src="theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+  .ribbon{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;margin-bottom:24px;box-shadow:0 1px 2px rgba(27,24,50,.03)}
+  .ribbon .cell{padding:15px 20px;flex:1;border-right:1px solid var(--line)}
+  .ribbon .cell:last-child{border-right:0}
+  .ribbon .k{display:flex;align-items:baseline;gap:8px}
+  .ribbon .k .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:24px;letter-spacing:-.5px;color:var(--ink)}
+  .ribbon .k .v.hi{color:var(--purple)}
+  .ribbon .k .u{color:var(--faint);font-size:12px}
+  .ribbon .lab{color:var(--muted);font-size:12px;margin-top:2px}
+  .bar{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+  .search{flex:1;min-width:200px;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 13px}
+  .search svg{width:16px;height:16px;color:var(--faint);stroke-width:2}
+  .search input{background:0;border:0;outline:0;color:var(--ink);font-size:13.5px;width:100%;font-family:inherit}
+  .search input::placeholder{color:var(--faint)}
+  .seg{display:flex;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:3px}
+  .seg button{background:0;border:0;color:var(--muted);font:inherit;font-size:12.5px;font-weight:500;padding:6px 13px;border-radius:7px;cursor:pointer}
+  .seg button.on{background:var(--tint);color:var(--purple-d);font-weight:600}
+  .list{display:flex;flex-direction:column;gap:9px}
+  .site{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;box-shadow:0 1px 2px rgba(27,24,50,.03);transition:border-color .15s,box-shadow .15s,transform .12s}
+  .site:hover{border-color:var(--purple-l);box-shadow:0 10px 26px -14px rgba(77,48,149,.5);transform:translateY(-1px)}
+  .site .lead{display:flex;align-items:center;gap:14px;min-width:0}
+  .site .dom{min-width:0}
+  .site .dom .d{font-family:"IBM Plex Mono",monospace;font-size:14.5px;font-weight:500;letter-spacing:-.2px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .site .dom .subr{display:flex;align-items:center;gap:9px;margin-top:4px;color:var(--muted);font-size:12px}
+  .site .metar{display:flex;align-items:center;gap:22px}
+  .ssl{text-align:right}
+  .ssl .s{font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:6px;justify-content:flex-end}
+  .ssl .s.ok{color:var(--ok)}.ssl .s.pending{color:var(--warn)}.ssl .s.none{color:var(--off)}
+  .ssl .s svg{width:13px;height:13px;stroke-width:2.4}
+  .ssl small{color:var(--faint);font-size:11px;font-family:"IBM Plex Mono",monospace}
+  .go{width:32px;height:32px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+  .go:hover{border-color:var(--purple);color:var(--purple);background:var(--tint)}
+  .go svg{width:16px;height:16px;stroke-width:2}
+  @media (max-width:820px){.site{grid-template-columns:1fr}.site .metar{justify-content:space-between;padding-top:12px;margin-top:2px;border-top:1px solid var(--line)}.ribbon{flex-wrap:wrap}.ribbon .cell{flex:1 1 40%}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="mk"><img src="img/lamun-logo.png" alt="Lamun"></div><div><b>Lamund</b><small>web server</small></div></div>
+    <nav class="nav">
+      <span class="lbl">Kelola</span>
+      <a class="on" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h10"/></svg> Situs <span class="cnt">6</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg> Sertifikat <span class="cnt">4</span></a>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M17 8h4M19 6v4"/></svg> Pengguna <span class="cnt">3</span></a>
+      <span class="lbl">Akun</span>
+      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg> Pengaturan</a>
+    </nav>
+    <div class="foot"><div class="ava">R</div><div class="who">Rani<small>admin</small></div></div>
+  </aside>
+
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Situs</h1><div class="sub"><b>5 dari 6</b> hidup &middot; semua sehat</div></div>
+      <a class="btn pri" href="add-site.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg> Situs baru</a>
+    </div>
+
+    <div class="ribbon">
+      <div class="cell"><div class="k"><span class="v hi">5</span><span class="u">/ 6 situs</span></div><div class="lab">Hidup sekarang</div></div>
+      <div class="cell"><div class="k"><span class="v">4</span><span class="u">valid</span></div><div class="lab">Sertifikat SSL</div></div>
+      <div class="cell"><div class="k"><span class="v">1</span><span class="u">perlu perhatian</span></div><div class="lab">DNS belum mengarah</div></div>
+      <div class="cell"><div class="k"><span class="v mono" style="font-size:20px">2.6</span><span class="u">GB / 15</span></div><div class="lab">Penyimpanan terpakai</div></div>
+    </div>
+
+    <div class="bar">
+      <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input placeholder="Cari domain…"></label>
+      <div class="seg"><button class="on">Semua</button><button>Static</button><button>Proxy</button></div>
+    </div>
+
+    <div class="list">
+      <a class="site" href="site-detail.html">
+        <div class="lead"><span class="pulse"><i></i></span><div class="dom"><div class="d">api.tokoku.id</div><div class="subr"><span class="tag proxy">Proxy <span class="a">→ :3000</span></span> <span>Node.js app</span></div></div></div>
+        <div class="metar"><div class="ssl"><div class="s ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>SSL aktif</div><small>habis 61 hari lagi</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="site" href="site-detail.html">
+        <div class="lead"><span class="pulse"><i></i></span><div class="dom"><div class="d">blog.rani.dev</div><div class="subr"><span class="tag static">Static</span> <span>1.204 halaman</span></div></div></div>
+        <div class="metar"><div class="ssl"><div class="s ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>SSL aktif</div><small>habis 78 hari lagi</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="site" href="site-detail.html">
+        <div class="lead"><span class="pulse"><i></i></span><div class="dom"><div class="d">docs.lamund.dev</div><div class="subr"><span class="tag static">Static</span> <span>Dokumentasi</span></div></div></div>
+        <div class="metar"><div class="ssl"><div class="s ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>SSL aktif</div><small>habis 89 hari lagi</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="site" href="site-detail.html">
+        <div class="lead"><span class="pulse"><i></i></span><div class="dom"><div class="d">staging.tokoku.id</div><div class="subr"><span class="tag proxy">Proxy <span class="a">→ :3001</span></span> <span>Pratinjau</span></div></div></div>
+        <div class="metar"><div class="ssl"><div class="s ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>SSL aktif</div><small>habis 61 hari lagi</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="site" href="site-detail.html">
+        <div class="lead"><span class="pulse warn"><i></i></span><div class="dom"><div class="d">shop.warungbu.id</div><div class="subr"><span class="tag proxy">Proxy <span class="a">→ :8080</span></span> <span style="color:var(--warn)">DNS belum mengarah ke server</span></div></div></div>
+        <div class="metar"><div class="ssl"><div class="s pending"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>SSL menunggu</div><small>terbit setelah DNS</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span></div>
+      </a>
+      <a class="site" href="site-detail.html">
+        <div class="lead"><span class="pulse off"><i></i></span><div class="dom"><div class="d" style="color:var(--muted)">old.rani.dev</div><div class="subr"><span class="tag static">Static</span> <span>Dinonaktifkan</span></div></div></div>
+        <div class="metar"><div class="ssl"><div class="s none">Nonaktif</div><small>tidak dilayani</small></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </div>
+  </main>
+</div>
+</body>
+</html>

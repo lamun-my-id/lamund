@@ -1,0 +1,91 @@
+# GoReleaser — rilis multi-arch lamund (single binary, panel ter-embed).
+# Uji lokal: goreleaser release --snapshot --clean
+version: 2
+
+before:
+  hooks:
+    # Panel Vue harus di-build lebih dulu agar web/dist terisi untuk go:embed.
+    - sh -c "cd web && npm ci && npm run build"
+    - go mod tidy
+
+builds:
+  - id: lamund
+    main: ./cmd/lamund
+    binary: lamund
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -X github.com/lamund/lamund/internal/version.Version={{ .Tag }}
+
+archives:
+  - id: lamund
+    formats: [tar.gz]
+    name_template: "lamund_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - LICENSE
+      - README.md
+      - packaging/*
+
+nfpms:
+  - id: lamund
+    package_name: lamund
+    vendor: Lamun Research
+    homepage: https://github.com/lamund/lamund
+    maintainer: Lamun Research <it@padhrbp.com>
+    description: |-
+      Lamund — mini hosting platform. Reverse proxy, static & app hosting,
+      auto-HTTPS (Let's Encrypt), managed app processes, embedded web panel.
+      Satu binary, tanpa dependensi eksternal wajib.
+    license: Apache-2.0
+    formats: [deb, rpm]
+    bindir: /usr/local/bin
+    # Runtime bahasa (node/python/go) TIDAK diwajibkan — hanya perlu bila
+    # menjalankan app di bahasa tsb. Dipasang per-app (rencana: via mise).
+    suggests:
+      - nodejs
+      - python3
+    contents:
+      - src: packaging/lamund.service
+        dst: /etc/systemd/system/lamund.service
+        type: config
+      - src: packaging/lamund-panel.service
+        dst: /etc/systemd/system/lamund-panel.service
+        type: config
+      - src: packaging/sysusers.conf
+        dst: /usr/lib/sysusers.d/lamund.conf
+      - src: packaging/tmpfiles.conf
+        dst: /usr/lib/tmpfiles.d/lamund.conf
+      - src: LICENSE
+        dst: /usr/share/doc/lamund/LICENSE
+      - src: README.md
+        dst: /usr/share/doc/lamund/README.md
+    scripts:
+      postinstall: packaging/scripts/postinstall.sh
+      preremove: packaging/scripts/preremove.sh
+      postremove: packaging/scripts/postremove.sh
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^ci:"
+      - "merge:"
+
+release:
+  github:
+    owner: lamund
+    name: lamund
+  draft: true
+  prerelease: auto

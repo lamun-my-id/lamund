@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — svc.lamund.lamun.my.id</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side" data-active="sites"></aside>
+  <main class="main">
+    <div class="crumb"><a href="sites.html">Situs</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg> svc.lamund.lamun.my.id</div>
+
+    <div class="page-head">
+      <div>
+        <div class="h1" style="display:flex;align-items:center;gap:12px"><span class="pulse"><i></i></span> <span class="mono" style="font-size:24px">svc.lamund.lamun.my.id</span></div>
+        <div class="sub"><span class="tag t-app">node</span> <span class="mini ok">berjalan</span> · <span class="mono">v20.11.1 · :50001</span></div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn pri">Deploy git</button><button class="btn">Restart</button><button class="btn">Stop</button></div>
+    </div>
+
+    <div class="tabs">
+      <a class="on" href="#">Ringkasan</a><a href="#">Deploy</a><a href="#">Environment</a><a href="#">Log</a><a href="#">Webhook</a>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:18px">
+      <div class="card" style="padding:18px 20px"><div class="st-sec">Runtime</div><div class="clines"><div><span>Bahasa</span><b>Node.js</b></div><div><span>Versi</span><b class="mono">v20.11.1</b></div><div><span>Dikelola</span><b>mise · .tool-versions</b></div></div></div>
+      <div class="card" style="padding:18px 20px"><div class="st-sec">Sumber</div><div class="clines"><div><span>Repo</span><b>acme/api</b></div><div><span>Branch</span><b class="mono">main</b></div><div><span>Commit</span><b class="mono">a9f6b2</b></div></div></div>
+      <div class="card" style="padding:18px 20px"><div class="st-sec">Proses</div><div class="clines"><div><span>Port</span><b class="mono">:50001</b></div><div><span>Restart</span><b>0 · sehat</b></div><div><span>Deploy</span><b>2 menit lalu · zero-downtime</b></div></div></div>
+    </div>
+
+    <div class="card" style="padding:20px 22px;margin-bottom:18px">
+      <div class="st-sec">Log build <span class="sub" style="text-transform:none;font-weight:400">— sukses (node · 12s)</span></div>
+      <div class="logs">Jenis proyek: node (mise: true)
+
+<span class="d">$ npm ci</span>
+added 214 packages in 6s
+
+<span class="d">$ npm run build</span>
+<span class="v">&gt; vite build</span>
+✓ 48 modules transformed · dist/ 41 KB gzip
+<span class="g">✔ build selesai.</span>  → deploy zero-downtime :40001 → :50001</div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card" style="padding:20px 22px">
+        <div class="st-sec">Environment variables</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:8px"><div class="input" style="width:150px"><input class="mono" value="NODE_ENV"></div><div class="input" style="flex:1"><input class="mono" value="production"></div></div>
+          <div style="display:flex;gap:8px"><div class="input" style="width:150px"><input class="mono" value="DATABASE_URL"></div><div class="input" style="flex:1"><input class="mono" type="password" value="••••••••••"></div></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:12px"><button class="btn sm">+ Variabel</button><button class="btn pri sm">Simpan env</button></div>
+      </div>
+      <div class="card" style="padding:20px 22px">
+        <div class="st-sec">Webhook GitHub</div>
+        <p class="sub" style="margin-bottom:12px">Tambahkan di GitHub → Settings → Webhooks. Tiap <code class="mono">git push</code> → pull → build → deploy.</p>
+        <div class="clines">
+          <div><span>Payload URL</span><b class="mono" style="font-size:11px;user-select:all">…/api/v1/hooks/git/svc…</b></div>
+          <div><span>Content type</span><b>application/json</b></div>
+          <div><span>Secret</span><b class="mono" style="font-size:11px;user-select:all">a1b2c3d4e5f6…</b></div>
+          <div><span>Events</span><b>Just the push event</b></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

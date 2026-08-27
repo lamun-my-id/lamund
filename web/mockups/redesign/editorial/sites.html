@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Situs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side" data-active="sites"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div><div class="h1">Situs</div><div class="sub"><b>7</b> deployment · statis, proxy & aplikasi — semua dengan HTTPS otomatis</div></div>
+      <a class="btn pri" href="new.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg> Deployment baru</a>
+    </div>
+
+    <div class="seg" style="max-width:520px;margin-bottom:18px">
+      <button class="on"><b>Semua</b></button><button><b>Statis</b></button><button><b>Aplikasi</b></button><button><b>Proxy</b></button>
+    </div>
+
+    <div class="list">
+      <a class="row" href="app-detail.html">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">svc.lamund.lamun.my.id</div><div class="meta"><span class="tag t-app">app · node</span> <span class="mini ok"><span class="pulse sm"><i></i></span> berjalan</span> <span class="mono">v20.11.1 · :50001</span></div></div>
+        <div class="side-info"><span class="mini ok">HTTPS aktif</span><b>deploy 2 mnt lalu</b></div>
+        <span class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="row" href="app-detail.html">
+        <span class="pulse warn"><i></i></span>
+        <div><div class="dom">gitdemo.lamund.lamun.my.id</div><div class="meta"><span class="tag t-app">app · express</span> <span class="mini build"><span class="spin"></span> building</span> <span class="mono">acme/api@main</span></div></div>
+        <div class="side-info"><span class="mini ok">HTTPS aktif</span><b>push · 1 mnt lalu</b></div>
+        <span class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="row" href="app-detail.html">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">run.lamund.lamun.my.id</div><div class="meta"><span class="tag t-app">app · python</span> <span class="mini ok"><span class="pulse sm"><i></i></span> berjalan</span> <span class="mono">:40003</span></div></div>
+        <div class="side-info"><span class="mini ok">HTTPS aktif</span><b>uptime 3 hari</b></div>
+        <span class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="row" href="site-detail.html">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">app.lamund.lamun.my.id</div><div class="meta"><span class="tag static">statis · vue</span> SPA · 24 berkas · <span class="mono">/api → app</span></div></div>
+        <div class="side-info"><span class="mini ok">HTTPS aktif</span><b>YE1 · 89 hari</b></div>
+        <span class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="row" href="site-detail.html">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">test.lamund.lamun.my.id</div><div class="meta"><span class="tag proxy">proxy</span> → <span class="mono">127.0.0.1:3000</span></div></div>
+        <div class="side-info"><span class="mini ok">HTTPS aktif</span><b>YE1 · 89 hari</b></div>
+        <span class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="row" href="site-detail.html">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">demo.lamund.lamun.my.id</div><div class="meta"><span class="tag static">statis · html</span> landing · 8 berkas</div></div>
+        <div class="side-info"><span class="mini ok">HTTPS aktif</span><b>YE1 · 87 hari</b></div>
+        <span class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="row" href="site-detail.html">
+        <span class="pulse warn"><i></i></span>
+        <div><div class="dom">shop.contoh.id</div><div class="meta"><span class="tag static">statis</span> menunggu DNS mengarah</div></div>
+        <div class="side-info"><span class="mini build">Menunggu DNS</span><b>cert tertunda</b></div>
+        <span class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

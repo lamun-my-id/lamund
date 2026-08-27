@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Masuk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="auth-wrap">
+  <form class="auth-box" onsubmit="location.href='index.html';return false">
+    <div class="auth-head">
+      <div class="mk"><b>L</b></div>
+      <h1>Masuk ke Lamund</h1>
+      <p>Kelola situs, aplikasi &amp; server di satu tempat</p>
+    </div>
+    <div class="card panel">
+      <div class="field"><label>Nama pengguna</label><div class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/></svg><input value="admin" autocomplete="username"></div></div>
+      <div class="field" style="margin-bottom:20px"><label>Kata sandi</label><div class="input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><input type="password" value="passwordku" autocomplete="current-password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="cursor:pointer"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+      <button class="btn pri block" type="submit">Masuk</button>
+    </div>
+    <div class="auth-foot">Server ini dikelola oleh <b>lamund v0.1.0</b> · <a href="#" style="color:var(--purple)">English</a></div>
+  </form>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

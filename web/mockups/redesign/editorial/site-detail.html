@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — app.lamund.lamun.my.id</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side" data-active="sites"></aside>
+  <main class="main">
+    <div class="crumb"><a href="sites.html">Situs</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg> app.lamund.lamun.my.id</div>
+
+    <div class="page-head">
+      <div>
+        <div class="h1" style="display:flex;align-items:center;gap:12px"><span class="pulse"><i></i></span> <span class="mono" style="font-size:26px">app.lamund.lamun.my.id</span></div>
+        <div class="sub"><span class="tag static">statis</span> SPA · folder terkelola · 24 berkas</div>
+      </div>
+      <a class="btn" href="#" target="_blank">Buka situs ↗</a>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:18px">
+      <div class="card" style="padding:20px 22px">
+        <div class="st-sec">Sertifikat SSL</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><span class="pulse"><i></i></span> <b style="font-size:15px">Aktif</b> <span class="tag static" style="margin-left:auto">89 hari lagi</span></div>
+        <div class="clines">
+          <div><span>Penerbit</span><b>Let's Encrypt · YE1</b></div>
+          <div><span>Berlaku sampai</span><b>18 Nov 2026</b></div>
+          <div><span>HTTPS</span><b>otomatis · diperpanjang sendiri</b></div>
+        </div>
+      </div>
+      <div class="card" style="padding:20px 22px">
+        <div class="st-sec">Status</div>
+        <div style="display:flex;gap:26px;margin-top:2px">
+          <div><div style="font-family:Bricolage Grotesque;font-weight:700;font-size:22px">aktif</div><div class="sub" style="font-size:12px">kondisi</div></div>
+          <div><div style="font-family:Bricolage Grotesque;font-weight:700;font-size:22px">2026-08-20</div><div class="sub" style="font-size:12px">dibuat</div></div>
+          <div><div style="font-family:Bricolage Grotesque;font-weight:700;font-size:22px">1.2k</div><div class="sub" style="font-size:12px">hit hari ini</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:20px 22px;margin-bottom:18px">
+      <div class="st-sec">Deploy</div>
+      <p class="sub" style="margin-bottom:14px">Unggah situsmu sebagai <b>.zip</b> (isi folder <code class="mono">dist/</code>). File lama diganti seluruhnya.</p>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><div class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 15V3M7 8l5-5 5 5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg> Pilih .zip</div><button class="btn pri">Deploy .zip</button><label class="check"><input type="checkbox" checked> Mode SPA (Vue/React)</label></div>
+      <table class="tbl" style="margin-top:16px"><tbody>
+        <tr><td class="mono">index.html</td><td style="text-align:right;color:var(--muted)">1.2 KB</td></tr>
+        <tr><td class="mono">assets/index-a9f.js</td><td style="text-align:right;color:var(--muted)">104 KB</td></tr>
+        <tr><td class="mono">assets/index-b2c.css</td><td style="text-align:right;color:var(--muted)">11 KB</td></tr>
+      </tbody></table>
+    </div>
+
+    <div class="card" style="padding:20px 22px;margin-bottom:18px">
+      <div class="st-sec">Routing lanjutan</div>
+      <p class="sub" style="margin-bottom:14px">Aturan dari <b>atas ke bawah</b> — cocok pertama menang. Mis. <code class="mono">/api</code> → proxy, sisanya → statis.</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <div class="input" style="width:150px"><span class="pre">path</span><input class="mono" value="/api"></div>
+          <select style="font:inherit;font-size:13.5px;padding:10px 12px;border-radius:11px;border:1px solid var(--line)"><option>proxy</option><option>static</option></select>
+          <div class="input" style="flex:1;min-width:180px"><span class="pre">http://</span><input class="mono" value="127.0.0.1:7788"></div>
+          <label class="check"><input type="checkbox"> cache</label>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <div class="input" style="width:150px"><span class="pre">path</span><input class="mono" value="/"></div>
+          <select style="font:inherit;font-size:13.5px;padding:10px 12px;border-radius:11px;border:1px solid var(--line)"><option>static</option><option>proxy</option></select>
+          <span class="sub" style="flex:1;min-width:180px">folder terkelola situs</span>
+          <label class="check"><input type="checkbox" checked> SPA</label>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:12px"><button class="btn sm">+ Tambah aturan</button><button class="btn pri sm">Simpan routing</button></div>
+    </div>
+
+    <div class="card" style="padding:20px 22px;margin-bottom:18px">
+      <div class="st-sec">Access log <span class="sub" style="text-transform:none;font-weight:400">(terakhir)</span></div>
+      <div class="logs"><span class="d">2026-08-22T06:40:11Z</span>  app.lamund.lamun.my.id  <span class="v">125.162.166.33</span>  GET /  <span class="g">200</span>  10280
+<span class="d">2026-08-22T06:40:12Z</span>  app.lamund.lamun.my.id  <span class="v">125.162.166.33</span>  GET /assets/index-a9f.js  <span class="g">200</span>  104200
+<span class="d">2026-08-22T06:40:14Z</span>  app.lamund.lamun.my.id  <span class="v">66.249.66.1</span>  GET /robots.txt  <span class="g">200</span>  62</div>
+    </div>
+
+    <div class="card" style="padding:20px 22px">
+      <div class="st-sec">Aksi</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn">Nonaktifkan</button><button class="btn">Ubah konfigurasi</button><button class="btn danger">Hapus situs</button></div>
+    </div>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lamund — Domain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side" data-active="domain"></aside>
+  <main class="main">
+    <div class="page-head">
+      <div><div class="h1">Domain</div><div class="sub">Daftarkan & kelola domain di satu pintu — DNS, pengarahan, dan HTTPS.</div></div>
+      <button class="btn pri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg> Tambah domain</button>
+    </div>
+
+    <div class="alert info" style="max-width:100%">Arahkan domain ke server ini: buat record <b>A</b> → <code class="mono">168.110.200.136</code> (atau <b>*</b> untuk wildcard subdomain). Setelah mengarah, HTTPS terbit otomatis.</div>
+
+    <div class="list">
+      <div class="row" style="cursor:default">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">lamun.my.id</div><div class="meta"><span class="tag static">utama</span> A → <span class="mono">168.110.200.136</span> · <span class="mono">*.lamund</span> wildcard</div></div>
+        <div class="side-info"><span class="mini ok">mengarah ke sini</span><b>6 deployment</b></div>
+        <button class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="row" style="cursor:default">
+        <span class="pulse"><i></i></span>
+        <div><div class="dom">contoh.id</div><div class="meta"><span class="tag proxy">terhubung</span> A → <span class="mono">168.110.200.136</span></div></div>
+        <div class="side-info"><span class="mini ok">mengarah ke sini</span><b>1 deployment</b></div>
+        <button class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="row" style="cursor:default">
+        <span class="pulse warn"><i></i></span>
+        <div><div class="dom">warungbu.id</div><div class="meta"><span class="tag static">baru</span> menunggu DNS mengarah ke <span class="mono">168.110.200.136</span></div></div>
+        <div class="side-info"><span class="mini build">Menunggu DNS</span><b>cek tiap 60 dtk</b></div>
+        <button class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="card" style="padding:22px;margin-top:22px">
+      <div class="sec" style="margin:0 0 6px"><h3 style="font-size:16px">Kelola DNS di sini</h3><span class="preview-tag">segera</span></div>
+      <p class="sub" style="margin-bottom:14px">Setelah nameserver dipindah ke Lamund, atur seluruh record (A / AAAA / CNAME / MX / TXT) langsung dari panel — satu pintu untuk domain, hosting, & HTTPS.</p>
+      <table class="tbl">
+        <thead><tr><th>Tipe</th><th>Nama</th><th>Nilai</th><th>TTL</th></tr></thead>
+        <tbody>
+          <tr><td><b>A</b></td><td class="mono">@</td><td class="mono">168.110.200.136</td><td class="mono">3600</td></tr>
+          <tr><td><b>A</b></td><td class="mono">*.lamund</td><td class="mono">168.110.200.136</td><td class="mono">3600</td></tr>
+          <tr><td><b>MX</b></td><td class="mono">@</td><td class="mono">mail.lamun.my.id</td><td class="mono">3600</td></tr>
+          <tr><td><b>TXT</b></td><td class="mono">@</td><td class="mono">v=spf1 include:…</td><td class="mono">3600</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<script src="shell.js"></script>
+</body>
+</html>
